@@ -57,49 +57,9 @@ function formatDateOption(date, type, range) {
     return returnDate;
 }
 
-// /**
-//  * ex) 1.	let CURRENT_MONTH = createMonthUpdater(new Date());
-//  * 	   2.	CURRENT_MONTH('-')
-//  * @param {date} currentDate  (기준 날짜(오늘))
-//  * @returns {func} monthIncDec(sort)  -> {string} : 방향 ('+' / '-' / '' -> currentDate)
-//  */
-// function createMonthUpdater(currentDate) {
-//     let finalDate = currentDate;
-
-//     function monthIncDec(sort) {
-//         if (sort == '+') {
-//             finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth() + 1, finalDate.getDate());
-//         } else if (sort == '-') {
-//             finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth() - 1, finalDate.getDate());
-//         }
-//         return finalDate;
-//     }
-//     return monthIncDec;
-// }
-
-
-// /**
-//  * ex) 1.	let CURRENT_DATE = createDateUpdater(new Date());
-//  * 	   2.	CURRENT_DATE('-')
-//  * @param {date} currentDate  (기준 날짜(오늘))
-//  * @returns {func} dateIncDec(sort)  -> {string} : 방향 ('+' / '-' / '' -> currentDate)
-//  */
-// function createDateUpdater(currentDate) {
-//     let finalDate = currentDate;
-
-//     function dateIncDec(sort) {
-//         if (sort == '+') {
-//             finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate() + 1);
-//         } else if (sort == '-') {
-//             finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate() - 1);
-//         }
-//         return finalDate;
-//     }
-//     return dateIncDec;
-// }
-
 
 /**
+ * 통합버전
  * ex) 1.	let CURRENT_DATE = createDateUpdater(new Date());
  * 	   2.	CURRENT_DATE('-')
  * @param {date} currentDate  (기준 날짜(오늘))
@@ -123,10 +83,8 @@ function createDateUpdater(currentDate, range) {
 
         if (sort == '+') {
             finalDate = new Date(nextCalculate[range][0], nextCalculate[range][1], nextCalculate[range][2]);
-            // finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate() + 1);
         } else if (sort == '-') {
             finalDate = new Date(prevCalculate[range][0], prevCalculate[range][1], prevCalculate[range][2]);
-            // finalDate = new Date(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate() - 1);
         }
         return finalDate;
     }
