@@ -59,6 +59,11 @@
         </div>
 
         <div class="btn-wrap">
+            <button id="btnPrevYear">이전해</button>
+            <p class="display-date" id="displayYear"></p>
+            <button id="btnNextYear">다음해</button>
+        </div>
+        <div class="btn-wrap">
             <button id="btnPrevMonth">이전달</button>
             <p class="display-date" id="displayMonth"></p>
             <button id="btnNextMonth">다음달</button>
@@ -68,8 +73,15 @@
             <p class="display-date" id="displayDate"></p>
             <button id="btnNextDate">다음날</button>
         </div>
+        <h2>오늘(이번달)까지 체크</h2>
+        <div class="btn-wrap">
+            <button id="btnPrevDate2">이전날</button>
+            <p class="display-date" id="displayDate2"></p>
+            <button id="btnNextDate2">다음날</button>
+        </div>
     </div>
-    <script src="/dateFormat-updateMonth-date-/main.js"></script>
+    <!-- <script src="/dateFormat-updateMonth-date-/main.js"></script> -->
+    <script src="/main.js"></script>
     <script>
         const toDayMonth = new Date();
 
@@ -90,12 +102,28 @@
 
 
         /*--------------------------------------------------------------
-            formatDateOption
+            createDateUpdater   //전역변수대신 함수를 지정후 그 함수내의 지역변수지정
         --------------------------------------------------------------*/
-        let CURRENT_MONTH = createMonthUpdater(toDayMonth); //전역변수대신 함수를 지정후 그 함수내의 지역변수지정
 
+        // Year
+        let CURRENT_YEAR = createDateUpdater(toDayMonth, 'year');
+        const displayYearHtml = document.querySelector('#displayYear');
+        displayYearHtml.innerHTML = formatDateOption(toDayMonth, 3, 'year');
+
+        document.querySelector('#btnPrevYear').addEventListener('click', function () {
+            displayYearHtml.innerHTML = formatDateOption(CURRENT_YEAR('-'), 3, 'year');
+        });
+        document.querySelector('#btnNextYear').addEventListener('click', function () {
+            displayYearHtml.innerHTML = formatDateOption(CURRENT_YEAR('+'), 3, 'year');
+        });
+
+
+
+        // month
+        let CURRENT_MONTH = createDateUpdater(toDayMonth, 'month');
         const displayDateHtml = document.querySelector('#displayMonth');
         displayDateHtml.innerHTML = formatDateOption(toDayMonth, 3, 'month');
+
         document.querySelector('#btnPrevMonth').addEventListener('click', function () {
             displayDateHtml.innerHTML = formatDateOption(CURRENT_MONTH('-'), 3, 'month');
         });
@@ -103,8 +131,8 @@
             displayDateHtml.innerHTML = formatDateOption(CURRENT_MONTH('+'), 3, 'month');
         });
 
-
-        let CURRENT_DATE = createDateUpdater(toDayMonth); //전역변수대신 함수를 지정후 그 함수내의 지역변수지정
+        //date
+        let CURRENT_DATE = createDateUpdater(toDayMonth, 'day');
         document.querySelector('#displayDate').innerHTML = formatDateOption(toDayMonth, 3, 'day');
         document.querySelector('#btnPrevDate').addEventListener('click', function () {
             document.querySelector('#displayDate').innerHTML = formatDateOption(CURRENT_DATE('-'), 3, 'day');
@@ -113,6 +141,28 @@
         document.querySelector('#btnNextDate').addEventListener('click', function () {
             document.querySelector('#displayDate').innerHTML = formatDateOption(CURRENT_DATE('+'), 3, 'day');
         });
+
+
+        //date2
+        let CURRENT_DATE2 = createDateUpdater(toDayMonth, 'day');
+        document.querySelector('#displayDate2').innerHTML = formatDateOption(toDayMonth, 3, 'day');
+        document.querySelector('#btnPrevDate2').addEventListener('click', function () {
+            document.querySelector('#displayDate2').innerHTML = formatDateOption(CURRENT_DATE2('-'), 3, 'day');
+        });
+
+        document.querySelector('#btnNextDate2').addEventListener('click', function () {
+            const compareDate = createDateUpdater(CURRENT_DATE2(), 'day');
+            if (Date.parse(CURRENT_DATE2()) >= Date.parse(toDayMonth) || Date.parse(compareDate('+')) >= Date.parse(toDayMonth)) {
+                alert('미래')
+                return;
+            }
+            document.querySelector('#displayDate2').innerHTML = formatDateOption(CURRENT_DATE2('+'), 3, 'day');
+        });
+
+
+
+
+
 
     </script>
 </body>
