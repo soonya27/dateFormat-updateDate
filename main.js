@@ -2,6 +2,9 @@
 
 /**
  * formatDate 타입과 범위 지정
+ * @author pyeon
+ * example)))
+    formatDateOption(new Date(), 3, 'month')
  * @param {string} date 
  * @param {string & number} type  '-' , '.', '년월일'  Or 1,2,3
  * @param {string} range:optional   'year' , 'month' , 'day'
@@ -59,9 +62,11 @@ function formatDateOption(date, type, range) {
 
 
 /**
- * 통합버전
- * ex) 1.	let CURRENT_DATE = createDateUpdater(new Date());
- * 	   2.	CURRENT_DATE('-')
+ * @author pyeon
+ * 날짜 증가/감소
+ * example)))
+    1.	let CURRENT_DATE = createDateUpdater(new Date());
+    2.	CURRENT_DATE('-' , '+' , )
  * @param {date} currentDate  (기준 날짜(오늘))
  * @param {string} range  'year', 'month' , 'day'
  * @returns {func} dateIncDec(sort)  -> {string} : 방향 ('+' / '-' / '' -> currentDate)
