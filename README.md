@@ -1,6 +1,6 @@
 # dateFormat , 날짜 증가/감소 공통처리 (전역변수 사용X, 함수내의 지역변수로 처리)
 
-### [githubpage](https://github.com/soonya27/dateFormat-updateMonth-date-/deployments/activity_log?environment=github-pages)
+### [githubpage](https://soonya27.github.io/dateFormat-updateMonth-date-/)
 
 
 
