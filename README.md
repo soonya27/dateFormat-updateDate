@@ -1,6 +1,6 @@
 # dateFormat , 날짜 증가/감소 공통처리 (전역변수 사용X, 함수내의 지역변수로 처리)
 
-### [githubpage](https://)
+### [githubpage](https://github.com/soonya27/dateFormat-updateMonth-date-/deployments/activity_log?environment=github-pages)
 
 
 
@@ -24,9 +24,9 @@ CURRENT_DATE('-'); //CURRENT_DATE('+'), CURRENT_DATE()
  * @returns {func} dateIncDec(sort)  -> {string} : 방향 ('+' / '-' / '' -> currentDate)
  */
 function createDateUpdater(currentDate, range) {
-    let finalDate = currentDate;    //
+    let finalDate = currentDate; //지역변수
 
-    function dateIncDec(sort) {
+    function dateIncDec(sort) {  //지역변수 변경하는 함수
         const nextCalculate = {
             year: [finalDate.getFullYear() + 1, finalDate.getMonth(), finalDate.getDate()],
             month: [finalDate.getFullYear(), finalDate.getMonth() + 1, finalDate.getDate()],
@@ -45,7 +45,7 @@ function createDateUpdater(currentDate, range) {
         }
         return finalDate;
     }
-    return dateIncDec;
+    return dateIncDec;   //함수를 return
 }
 
 ```
