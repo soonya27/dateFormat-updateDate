@@ -72,7 +72,7 @@ function formatDateOption(date, type, range) {
  * @returns {func} dateIncDec(sort)  -> {string} : 방향 ('+' / '-' / '' -> currentDate)
  */
 function createDateUpdater(currentDate, range) {
-    let finalDate = currentDate;
+    let finalDate = new Date(currentDate);
 
     function dateIncDec(sort) {
         const nextCalculate = {
