@@ -8,6 +8,8 @@
 ```javascript
 const toDayMonth = new Date();
 
+formatDateOption(toDayMonth);  //2023-01-01
+
 formatDateOption(toDayMonth, 1, 'year');
 formatDateOption(toDayMonth, 1, 'month');
 formatDateOption(toDayMonth, 1, 'day');
@@ -30,8 +32,8 @@ formatDateOption(toDayMonth, 3, 'day');
  * example)))
     formatDateOption(new Date(), 3, 'month')
  * @param {string} date 
- * @param {string & number} type  '-' , '.', '년월일'  Or 1,2,3
- * @param {string} range:optional   'year' , 'month' , 'day'
+ * @param {string & number} type:optional  '-' , '.', '년월일'  Or 1,2,3  == default : '-'
+ * @param {string} range:optional   'year' , 'month' , 'day' == default : 'day'
  * @returns string ex) '2022' , '2022.01' , '2022년 01월'
  */
 function formatDateOption(date, type, range) {
