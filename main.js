@@ -6,8 +6,8 @@
  * example)))
     formatDateOption(new Date(), 3, 'month')
  * @param {string} date 
- * @param {string & number} type  '-' , '.', '년월일'  Or 1,2,3
- * @param {string} range:optional   'year' , 'month' , 'day'
+ * @param {string & number} type:optional  '-' , '.', '년월일'  Or 1,2,3  == default : '-'
+ * @param {string} range:optional   'year' , 'month' , 'day' == default : 'day'
  * @returns string ex) '2022' , '2022.01' , '2022년 01월'
  */
 function formatDateOption(date, type, range) {
@@ -24,7 +24,7 @@ function formatDateOption(date, type, range) {
         { numId: 2, keyword: '.', text: ['.', '.'] },
         { numId: 3, keyword: '년월일', text: ['년', '월', '일'] },
     ];
-    const selectedType = types.find((item) => type == item.numId || type == item.keyword);
+    const selectedType = types.find((item) => (type || 1) == item.numId || type == item.keyword);
 
     let returnDate = '';
     switch (range) {

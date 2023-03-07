@@ -45,6 +45,8 @@
     <div id="wrap">
         <h1>dateFormat</h1>
         <div class="formdate-wrap">
+            <h2>default</h2>
+            <strong id="dateformat0"></strong>
             <h2>type 1</h2>
             <strong id="dateformat1"></strong>
             <strong id="dateformat2"></strong>
@@ -92,6 +94,7 @@
         /*--------------------------------------------------------------
             formatDateOption
         --------------------------------------------------------------*/
+        document.querySelector('#dateformat0').innerHTML = formatDateOption(toDayMonth);
         document.querySelector('#dateformat1').innerHTML = formatDateOption(toDayMonth, 1, 'year');
         document.querySelector('#dateformat2').innerHTML = formatDateOption(toDayMonth, 1, 'month');
         document.querySelector('#dateformat3').innerHTML = formatDateOption(toDayMonth, 1, 'day');
