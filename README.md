@@ -105,7 +105,7 @@ CURRENT_DATE('-'); //CURRENT_DATE('+'), CURRENT_DATE()
  * @author pyeon
  * 날짜 증가/감소
  * example)))
-    1.	let CURRENT_DATE = createDateUpdater(new Date());
+    1.	const CURRENT_DATE = createDateUpdater(new Date());
     2.	CURRENT_DATE('-' , '+' , )
  * @param {date} currentDate  (기준 날짜(오늘))
  * @param {string} range  'year', 'month' , 'day'
