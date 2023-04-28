@@ -34,7 +34,7 @@ formatDateOption(toDayMonth, 3, 'day');
  * @param {string} date 
  * @param {string & number} type:optional  '-' , '.', '년월일'  Or 1,2,3  == default : '-'
  * @param {string} range:optional   'year' , 'month' , 'day' == default : 'day'
- * @returns string ex) '2022' , '2022.01' , '2022년 01월'
+ * @returns string ex) '2022/2022년' , '2022-01/2022.01/2022년1월' , '2022-01-01/2022.01.01/2022년 01월 01일'
  */
 function formatDateOption(date, type, range) {
     const d = new Date(date);
