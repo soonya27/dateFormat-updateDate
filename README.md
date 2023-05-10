@@ -137,3 +137,55 @@ function createDateUpdater(currentDate, range) {
 }
 
 ```
+
+
+### example2  Class ver
+```javascript
+const today = new UpdateDate(new Date());
+console.log(today.update('+', 'month'));
+console.log(today.date)
+```
+
+### code
+```javascript
+
+class UpdateDate {
+    #currentDate;
+    constructor(currentDate) {
+        this.#currentDate = currentDate;
+    }
+    
+    /**
+     * 날짜 증가/감소
+     * @param {string} sort'-' / '+'
+     * @param {string} range  'year', 'month' , 'day'
+     */
+    update(sort, range) {
+        const nextCalculate = {
+            year: [this.#currentDate.getFullYear() + 1, this.#currentDate.getMonth(), this.#currentDate.getDate()],
+            month: [this.#currentDate.getFullYear(), this.#currentDate.getMonth() + 1, this.#currentDate.getDate()],
+            day: [this.#currentDate.getFullYear(), this.#currentDate.getMonth(), this.#currentDate.getDate() + 1],
+        }
+        const prevCalculate = {
+            year: [this.#currentDate.getFullYear() - 1, this.#currentDate.getMonth(), this.#currentDate.getDate()],
+            month: [this.#currentDate.getFullYear(), this.#currentDate.getMonth() - 1, this.#currentDate.getDate()],
+            day: [this.#currentDate.getFullYear(), this.#currentDate.getMonth(), this.#currentDate.getDate() - 1],
+        }
+
+        if (sort == '+') {
+            this.#currentDate = new Date(nextCalculate[range][0], nextCalculate[range][1], nextCalculate[range][2]);
+        } else if (sort == '-') {
+            this.#currentDate = new Date(prevCalculate[range][0], prevCalculate[range][1], prevCalculate[range][2]);
+        }
+    }
+
+    get date() {
+        return this.#currentDate;
+    }
+
+    set date(date) {
+        this.#currentDate = new Date(date);
+    }
+}
+
+```
