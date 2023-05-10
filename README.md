@@ -50,7 +50,7 @@ function formatDateOption(date, type, range) {
         { numId: 2, keyword: '.', text: ['.', '.'] },
         { numId: 3, keyword: '년월일', text: ['년', '월', '일'] },
     ];
-    const selectedType = types.find((item) => type == item.numId || type == item.keyword);
+    const selectedType = types.find((item) => (type || 1) == item.numId || type == item.keyword);
 
     let returnDate = '';
     switch (range) {
