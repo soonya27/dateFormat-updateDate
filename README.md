@@ -34,7 +34,7 @@ formatDateOption(toDayMonth, 3, 'day');
  * @param {string} date 
  * @param {string & number} type:optional  '-' , '.', '년월일'  Or 1,2,3  == default : '-'
  * @param {string} range:optional   'year' , 'month' , 'day' == default : 'day'
- * @returns string ex) '2022' , '2022.01' , '2022년 01월'
+ * @returns string ex) '2022/2022년' , '2022-01/2022.01/2022년1월' , '2022-01-01/2022.01.01/2022년 01월 01일'
  */
 function formatDateOption(date, type, range) {
     const d = new Date(date);
@@ -105,7 +105,7 @@ CURRENT_DATE('-'); //CURRENT_DATE('+'), CURRENT_DATE()
  * @author pyeon
  * 날짜 증가/감소
  * example)))
-    1.	let CURRENT_DATE = createDateUpdater(new Date());
+    1.	const CURRENT_DATE = createDateUpdater(new Date());
     2.	CURRENT_DATE('-' , '+' , )
  * @param {date} currentDate  (기준 날짜(오늘))
  * @param {string} range  'year', 'month' , 'day'
@@ -134,6 +134,58 @@ function createDateUpdater(currentDate, range) {
         return finalDate;
     }
     return dateIncDec;   //함수를 return
+}
+
+```
+
+
+### example2  Class ver
+```javascript
+const today = new UpdateDate(new Date());
+console.log(today.update('+', 'month'));
+console.log(today.date)
+```
+
+### code
+```javascript
+
+class UpdateDate {
+    #currentDate;
+    constructor(currentDate) {
+        this.#currentDate = currentDate;
+    }
+    
+    /**
+     * 날짜 증가/감소
+     * @param {string} sort'-' / '+'
+     * @param {string} range  'year', 'month' , 'day'
+     */
+    update(sort, range) {
+        const nextCalculate = {
+            year: [this.#currentDate.getFullYear() + 1, this.#currentDate.getMonth(), this.#currentDate.getDate()],
+            month: [this.#currentDate.getFullYear(), this.#currentDate.getMonth() + 1, this.#currentDate.getDate()],
+            day: [this.#currentDate.getFullYear(), this.#currentDate.getMonth(), this.#currentDate.getDate() + 1],
+        }
+        const prevCalculate = {
+            year: [this.#currentDate.getFullYear() - 1, this.#currentDate.getMonth(), this.#currentDate.getDate()],
+            month: [this.#currentDate.getFullYear(), this.#currentDate.getMonth() - 1, this.#currentDate.getDate()],
+            day: [this.#currentDate.getFullYear(), this.#currentDate.getMonth(), this.#currentDate.getDate() - 1],
+        }
+
+        if (sort == '+') {
+            this.#currentDate = new Date(nextCalculate[range][0], nextCalculate[range][1], nextCalculate[range][2]);
+        } else if (sort == '-') {
+            this.#currentDate = new Date(prevCalculate[range][0], prevCalculate[range][1], prevCalculate[range][2]);
+        }
+    }
+
+    get date() {
+        return this.#currentDate;
+    }
+
+    set date(date) {
+        this.#currentDate = new Date(date);
+    }
 }
 
 ```
